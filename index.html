@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hideaways Cabo | Inventario Fase 1</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Hideaways Cabo · Inventory / Availability – Fase 1</h1>
+        <p>Torre 1 y Torre 2 en venta · Torre 3 no disponible aún</p>
+      </div>
+      <div class="topbar-actions">
+        <select id="towerFilter" class="btn btn-light">
+          <option value="all">Ver todo</option>
+          <option value="T1">Solo Torre 1</option>
+          <option value="T2">Solo Torre 2</option>
+          <option value="T3">Solo Torre 3</option>
+        </select>
+        <button id="toggleAdminBtn" class="btn">Modo edición</button>
+        <button id="exportBtn" class="btn btn-light">Exportar JSON</button>
+        <label class="btn btn-light file-label">Importar JSON<input id="importInput" type="file" accept="application/json" /></label>
+      </div>
+    </header>
+
+    <main>
+      <section class="legend">
+        <span><i class="dot dot-available"></i> Disponible</span>
+        <span><i class="dot dot-reserved"></i> Reservado</span>
+        <span><i class="dot dot-sold"></i> Vendido</span>
+        <span><i class="dot dot-disabled"></i> Torre 3 (próximamente)</span>
+      </section>
+
+      <section class="building-wrapper">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=80" alt="Render Hideaways Cabo" class="building-image" />
+        <div id="unitsLayer" class="units-layer"></div>
+      </section>
+    </main>
+
+    <aside id="editor" class="editor hidden">
+      <h2>Editar unidad</h2>
+      <p id="selectedUnitHint">Selecciona una unidad.</p>
+      <form id="unitForm" class="hidden">
+        <label>Unidad<input id="unitName" type="text" disabled /></label>
+        <label>Torre<input id="unitTower" type="text" disabled /></label>
+        <label>Estado
+          <select id="unitStatus">
+            <option value="available">Disponible</option>
+            <option value="reserved">Reservado</option>
+            <option value="sold">Vendido</option>
+            <option value="disabled">No en venta</option>
+          </select>
+        </label>
+        <label>Precio USD<input id="unitPrice" type="number" min="0" step="1000" /></label>
+        <label>Recámaras<input id="unitBeds" type="number" min="0" step="1" /></label>
+        <label>Baños<input id="unitBaths" type="number" min="0" step="0.5" /></label>
+        <button type="submit" class="btn">Guardar</button>
+      </form>
+    </aside>
+    <script src="app.js"></script>
+  </body>
+</html>
